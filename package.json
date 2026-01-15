@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The **Eye Reporter Backend** is a REST API that receives reports from users and returns submitted reports to the frontend.  \r This backend does **not use a database**. All data is stored temporarily in memory.",
   "main": "src/server.js",
- "scripts": {
+  "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },

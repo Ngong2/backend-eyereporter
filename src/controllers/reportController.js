@@ -16,29 +16,25 @@ const createReport = (req, res) => {
   if (!title || !description || !category || !location) {
     return res.status(400).json({
       success: false,
-      message: "All fields are required"
+      message: "All fields are required",
     });
   }
 
   // Create report object
   const newReport = {
-    id: reports.length + 1,
+    _id: Date.now().toString(),
     title,
     description,
     category,
     location,
-    createdAt: new Date()
+    createdAt: new Date(),
   };
 
   // Store report in memory
   reports.push(newReport);
 
-  // Return response
-  res.status(201).json({
-    success: true,
-    message: "Report submitted successfully",
-    data: newReport
-  });
+  // Return report directly
+  res.status(201).json(newReport);
 };
 
 /**
@@ -46,14 +42,10 @@ const createReport = (req, res) => {
  * Retrieve all reports
  */
 const getReports = (req, res) => {
-  res.status(200).json({
-    success: true,
-    totalReports: reports.length,
-    data: reports
-  });
+  res.status(200).json(reports);
 };
 
 module.exports = {
   createReport,
-  getReports
+  getReports,
 };
