@@ -9,17 +9,7 @@ const reportRoutes = require("../src/route/reportRoutes");
 const app = express();
 
 // Middleware
-const whitelist = [process.env.FRONTEND_URL || "http://localhost:3000"];
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || whitelist.includes(origin)) return callback(null, true);
-    callback(new Error("Not allowed by CORS"));
-  },
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // Routes
